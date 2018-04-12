@@ -1,0 +1,29 @@
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: true
+    prefer-same-zone-eureka: true
+    service-url:
+      defaultZone: http://eureka:8761/eureka/
+  instance:
+    health-check-url-path: /actuator/health
+    home-page-url-path: /actuator/info
+    lease-renewal-interval-in-seconds: 10
+
+logging:
+  level:
+    ROOT: info
+    org.bremersee: debug
+    org.springframework: info
+
+server:
+  port: ${SERVER_PORT:8020}
+  tomcat:
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
+    port-header: x-forwarded-port
+
+turbine:
+  aggregator:
+    cluster-config: BREMERSEE-API-AGGREGATE
+  app-config: BREMERSEE-API-AGGREGATE
